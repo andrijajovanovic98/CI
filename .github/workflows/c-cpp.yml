@@ -1,0 +1,42 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Install Norminette
+    - name: Install Norminette
+      run: |
+        sudo apt-get update
+        sudo apt-get install python3-pip -y
+        pip3 install norminette
+
+    # Run Norminette
+    - name: Run Norminette
+      run: norminette
+
+    # Configure
+    - name: configure
+      run: ./configure
+
+    # Build with make
+    - name: make
+      run: make
+
+    # Run make check
+    - name: make check
+      run: make check
+
+    # Run make distcheck
+    - name: make distcheck
+      run: make distcheck
