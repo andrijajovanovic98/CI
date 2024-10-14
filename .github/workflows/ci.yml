@@ -1,0 +1,25 @@
+name: C CI Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Norminette
+      run: |
+        sudo apt-get update
+        sudo apt-get install python3-pip
+        pip3 install norminette
+
+    - name: Run Norminette
+      run: |
+        norminette main.c
+
