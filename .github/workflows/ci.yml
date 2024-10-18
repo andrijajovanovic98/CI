@@ -16,10 +16,13 @@ jobs:
     - name: Install Norminette
       run: |
         sudo apt-get update
-        sudo apt install python3-setuptools
-        sudo apt install pipx
+        sudo apt-get install -y python3-setuptools
+        sudo apt-get install -y pipx
         pipx install norminette
         pipx ensurepath
+
+    - name: Add pipx to PATH
+      run: echo "::add-path::${HOME}/.local/bin"  # Hozzáadjuk a pipx telepített programokat a PATH-hoz
 
     - name: Run Norminette
       run: |
