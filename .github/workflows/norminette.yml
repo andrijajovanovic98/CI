@@ -1,19 +1,25 @@
-# .github/workflows/norminette.yml
-name: norminette
-on: [push, pull_request]
+name: Norminette Lint
+
+on: [push]
 
 jobs:
-
-  norminette_v2_job:
+  norminette-lint:
     runs-on: ubuntu-latest
-    name: norminette v2
-    steps:
-    - uses: actions/checkout@v2
-    - uses: alexandregv/norminette-action@v2
 
-  norminette_v3_job:
-    runs-on: ubuntu-latest
-    name: norminette v3
     steps:
-    - uses: actions/checkout@v2
-    - uses: alexandregv/norminette-action@v3
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install Norminette
+      run: |
+        python -m pip install --upgrade pip
+        pip install norminette
+
+    - name: Run Norminette
+      run: |
+        norminette
