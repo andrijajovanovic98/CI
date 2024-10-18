@@ -16,14 +16,10 @@ jobs:
     - name: Install Norminette
       run: |
         sudo apt-get update
+        sudo apt-get install -y python3-pip  # Biztosítsuk, hogy a pip telepítve van
         python3 -m pip install --upgrade pip setuptools
         python3 -m pip install norminette
-        sudo apt install python3-setuptools
-        sudo apt install pipx
-        pipx install norminette
-        pipx ensurepath
 
     - name: Run Norminette
       run: |
         norminette main.c
-
