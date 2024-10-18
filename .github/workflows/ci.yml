@@ -22,7 +22,7 @@ jobs:
         pipx ensurepath
 
     - name: Add pipx to PATH
-      run: echo "::add-path::${HOME}/.local/bin"  # Hozzáadjuk a pipx telepített programokat a PATH-hoz
+      run: echo "::add-path::${HOME}/.local/bin" 
 
     - name: Run Norminette
       run: |
