@@ -16,8 +16,10 @@ jobs:
     - name: Install Norminette
       run: |
         sudo apt-get update
-        sudo apt-get install python3-pip
-        pip3 install norminette
+        sudo apt install python3-setuptools
+        sudo apt install pipx
+        pipx install norminette
+        pipx ensurepath
 
     - name: Run Norminette
       run: |
