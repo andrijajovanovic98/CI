@@ -17,10 +17,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y python3-pip
-        python3 -m pip install --user norminette  # Telepít norminette-t a felhasználói könyvtárba
-
-    - name: Add Norminette to PATH
-      run: echo "::add-path::${HOME}/.local/bin"  # Hozzáadjuk a norminette-et a PATH-hoz
+        sudo pip3 install norminette  # Globális telepítés rendszerszinten
 
     - name: Run Norminette
       run: |
